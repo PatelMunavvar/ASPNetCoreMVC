@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -48,6 +49,40 @@ namespace Web.BookStore
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Middleware 1\n");
+            //    next.Invoke();
+
+            //    await context.Response.WriteAsync("Middleware 1.1\n");
+            //});
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Middleware 2\n");
+            //    next.Invoke();
+
+            //    await context.Response.WriteAsync("Middleware 2.1\n");
+            //});
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Middleware 3\n");
+            //    //next.Invoke();
+
+            //    //await context.Response.WriteAsync("Middleware 3.1\n");
+            //});
+
+            //app.UseRouting();
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello World\n");
+            //    });
+            //});
         }
     }
 }
