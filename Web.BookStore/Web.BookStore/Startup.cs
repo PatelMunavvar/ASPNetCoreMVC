@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace Web.BookStore
@@ -23,7 +24,7 @@ namespace Web.BookStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +50,7 @@ namespace Web.BookStore
                 endpoints.MapDefaultControllerRoute();
                 //endpoints.MapControllerRoute(
                 //    name: "default",
-                //    pattern: "{controller=Home}/{action=Index}/{id?}");
+                //    pattern: "{controller=book}/{action=getallbooks}");
             });
 
             //app.Use(async (context, next) =>

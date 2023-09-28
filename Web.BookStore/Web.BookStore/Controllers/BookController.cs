@@ -12,19 +12,25 @@ namespace Web.BookStore.Controllers
     {
         readonly BookRepository bookRepository = null;
 
+        [ViewData]
+        public string ctl2 { get; set; }
+
         public BookController()
         {
+            
             bookRepository = new BookRepository();
         }
 
-        public IEnumerable<Book> GetBooks()
+        public IActionResult GetAllBooks()
         {
-            return bookRepository.GetAllBooks().ToList();
+            ViewBag.ctl = "from controller";
+            ctl2 = "from controller 2";
+            return View(bookRepository.GetAllBooks().ToList());
         }
 
-        public Book GetBook(int id)
+        public IActionResult GetBook(int id)
         {
-            return bookRepository.GetBookById(id);
+            return View(bookRepository.GetBookById(id));
         }
 
         public Book SearchBook(string title, string author)
