@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using Web.BookStore.Models;
 using Web.BookStore.Repository;
 
@@ -17,7 +19,7 @@ namespace Web.BookStore.Controllers
 
         public BookController()
         {
-            
+
             bookRepository = new BookRepository();
         }
 
@@ -30,7 +32,10 @@ namespace Web.BookStore.Controllers
 
         public IActionResult GetBook(int id)
         {
-            return View(bookRepository.GetBookById(id));
+            Book book = bookRepository.GetBookById(id);
+            ViewData["Books"] = bookRepository.GetAllBooks().ToList()
+                .Where(item => !String.IsNullOrEmpty(item.Tags) && item.Tags == book.Tags).ToList();
+            return View(book);
         }
 
         public Book SearchBook(string title, string author)
@@ -38,6 +43,16 @@ namespace Web.BookStore.Controllers
             return bookRepository.SearchBook(title, author);
         }
 
+        public IActionResult AddNewBook()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult AddNewBook(Book book)
+        {
+            bookRepository.AddBook(book);
+            return RedirectToAction("GetAllBooks");
+        }
     }
 }

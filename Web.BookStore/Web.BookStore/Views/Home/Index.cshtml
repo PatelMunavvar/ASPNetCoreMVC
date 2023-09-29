@@ -3,18 +3,11 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with and ASP.NET Core</a>.</p>
-    @{
-        int a = 10;
-    }
-
-    @if (a < 0)
-    {
-        <h1>hello from if block</h1>
-    }
-    else
-    {
-        <h1>hello from else block</h1>
-    }
+    <h1 class="display-4">Welcome to Book Store</h1>
+    <environment names="Development">
+        <h3>Dev Environment</h3>
+    </environment>
+    <environment names="Production">
+        <h3>Prod Environment</h3>
+    </environment>
 </div>

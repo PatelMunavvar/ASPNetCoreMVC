@@ -1,0 +1,64 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "AddNewBook";
+}
+
+<div class="container px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 rounded-3 shadow-lg">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <div class="h1 fw-light">Add New Book</div>
+                        <p class="mb-4 text-muted">New book with following details</p>
+                    </div>
+
+
+                    <form method="post" asp-action="AddNewBook" id="contactForm" data-sb-form-api-token="API_TOKEN">
+
+                        <!-- Name Input -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Title" class="form-control" id="name" type="text" placeholder="Title" data-sb-validations="required" />
+                            <label for="name">Title</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Author" class="form-control" id="emailAddress" type="email" placeholder="Auther" data-sb-validations="required" />
+                            <label for="emailAddress">Auther</label>
+                            <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                             </div>
+
+                        <!-- Message Input -->
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Description" class="form-control" id="message" type="text" placeholder="Description" style="height: 10rem;" data-sb-validations="required"></textarea>
+                            <label for="message"></label>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Tags" class="form-control" id="name" type="text" placeholder="Tags" data-sb-validations="required" />
+                            <label for="name">Tags</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                        </div>
+
+                        <!-- Submit error message -->
+                        <div class="d-none" id="submitErrorMessage">
+                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="d-grid">
+                            @* <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button> *@
+                            <input type="submit" value="Add Book" class="btn btn-primary btn-lg disabled" />
+                        </div>
+                    </form>
+                    <!-- End of contact form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

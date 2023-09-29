@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Book>
 @{
     ViewData["Title"] = "GetAllBooks";
-    ViewBag.ctl3 = "From view";
+    
 }
 <div class="container">
     <h3 class="display-4">All books</h3>
@@ -16,8 +16,9 @@
                         <p class="card-text">@(string.IsNullOrEmpty(book.Description) ? "Description is not availabe" : book.Description)</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="/book/getbook/@book.Id"
+                                <a asp-controller="book" asp-action="getbook" asp-route-id="@book.Id" asp-fragment="divsimilarbooks"
                                    class="btn btn-sm btn-outline-secondary">View details</a>
+                                @* href="/book/getbook/@book.Id" *@
                             </div>
                             <small class="text-muted">@(string.IsNullOrEmpty(book.Author) ? "NA" : book.Author)</small>
                         </div>
